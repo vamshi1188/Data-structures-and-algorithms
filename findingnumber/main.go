@@ -1,14 +1,16 @@
 package main
 
 import (
-	"fmt"
+// "fmt"
 )
 
 func main() {
-	numlist := []int{3, 1, 3, 4, 2}
+	numlist := []int{0, 1, 2, 3, 4}
 
-	s := FIndDuplicateNum(numlist)
+	// s := FIndDuplicateNum(numlist)
 
-	fmt.Println(s)
+	// fmt.Println(s)
+
+	MissingNumber(numlist)
 
 }
