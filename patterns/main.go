@@ -6,7 +6,7 @@ import (
 
 func main() {
 
-	num := 6
+	num := 4
 	pattern1(num)
 	pattern2(num)
 	pattern3(num)
@@ -23,6 +23,198 @@ func main() {
 	pattern14(num)
 	pattern15(num)
 	pattern16(num)
+	pattern17(num)
+	pattern18(num)
+	pattern19(num)
+	pattern20(num)
+	pattern21(num)
+	pattern22(num)
+}
+
+// pattern22
+
+func pattern22(num int) {
+	fmt.Println("pattern 22")
+
+	for i := 0; i < 2*num-1; i++ {
+
+		for j := 0; j < 2*num-1; j++ {
+
+			top := i
+			left := j
+			right := (2*num - 2) - j
+			down := (2*num - 2) - i
+			fmt.Print(num-min(min(top, down), min(left, right)), " ")
+		}
+		fmt.Println()
+	}
+}
+
+// pattern21
+
+func pattern21(num int) {
+	fmt.Println("pattern 21")
+
+	for i := 0; i < num; i++ {
+
+		for j := 0; j < num; j++ {
+			if j == 0 || i == 0 || j == num-1 || i == num-1 {
+
+				fmt.Print("* ")
+
+			} else {
+				fmt.Print("  ")
+			}
+
+		}
+		fmt.Println()
+	}
+}
+
+// patter20
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+
+func pattern20(num int) {
+	fmt.Println("pattern20")
+
+	spacex := 8
+	for i := 1; i <= num; i++ {
+
+		for j := 0; j < i; j++ {
+			fmt.Print("*")
+		}
+
+		// spaces
+		for j := 0; j < spacex; j++ {
+			fmt.Print(" ")
+		}
+
+		for j := 0; j < i; j++ {
+
+			fmt.Print("*")
+		}
+		fmt.Println()
+		spacex -= 2
+	}
+	space := 0
+
+	for i := 1; i <= num; i++ {
+
+		for j := 0; j <= num-i; j++ {
+
+			fmt.Print("*")
+		}
+
+		for j := 0; j < space; j++ {
+			fmt.Print(" ")
+		}
+		for j := 0; j <= num-i; j++ {
+			fmt.Print("*")
+		}
+		space += 2
+
+		fmt.Println()
+
+	}
+}
+
+// pattern19
+
+func pattern19(num int) {
+
+	space := 0
+	fmt.Println("pattern 12")
+
+	for i := 1; i <= num; i++ {
+
+		for j := 0; j <= num-i; j++ {
+
+			fmt.Print("*")
+		}
+
+		for j := 0; j < space; j++ {
+			fmt.Print(" ")
+		}
+		for j := 0; j <= num-i; j++ {
+			fmt.Print("*")
+		}
+		space += 2
+
+		fmt.Println()
+
+	}
+
+	spacex := 8
+	for i := 1; i <= num; i++ {
+
+		for j := 0; j < i; j++ {
+			fmt.Print("*")
+		}
+
+		// spaces
+		for j := 0; j < spacex; j++ {
+			fmt.Print(" ")
+		}
+
+		for j := 0; j < i; j++ {
+
+			fmt.Print("*")
+		}
+		fmt.Println()
+		spacex -= 2
+	}
+}
+
+// pattern18
+
+func pattern18(num int) {
+	for i := 0; i < num; i++ {
+
+		for j := 'E' - rune(i); j <= 'E'; j++ {
+
+			fmt.Printf("%c", j)
+
+		}
+
+		fmt.Println()
+	}
+}
+
+// pattern17
+
+func pattern17(num int) {
+	for i := 0; i < num; i++ {
+
+		for j := 0; j < num-i-1; j++ {
+			fmt.Print(" ")
+		}
+
+		// alphabets
+		ch := 'A'
+		breakpoint := (2*i + 1) / 2
+		for j := 1; j <= 2*i+1; j++ {
+			fmt.Printf("%c", ch)
+			if j <= breakpoint {
+				ch++
+			} else {
+				ch--
+			}
+		}
+
+		for k := 0; k < num-i-1; k++ {
+			fmt.Print(" ")
+		}
+		fmt.Println()
+	}
 }
 
 // pattern16
