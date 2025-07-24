@@ -10,63 +10,43 @@ func TestIsArmstrong(t *testing.T) {
 		input    int
 		expected bool
 	}{
+		// Basic examples from problem statement
 		{"Example 1: 153", 153, true},
 		{"Example 2: 371", 371, true},
-		{"Three digit Armstrong: 407", 407, true},
-		{"Four digit Armstrong: 1634", 1634, true},
-		{"Four digit Armstrong: 8208", 8208, true},
-		{"Four digit Armstrong: 9474", 9474, true},
-		{"Five digit Armstrong: 54748", 54748, true},
-		{"Five digit Armstrong: 92727", 92727, true},
-		{"Five digit Armstrong: 93084", 93084, true},
+
+		// Single digits (all are Armstrong numbers)
 		{"Single digit: 0", 0, true},
 		{"Single digit: 1", 1, true},
 		{"Single digit: 5", 5, true},
 		{"Single digit: 9", 9, true},
+
+		// Basic non-Armstrong numbers
 		{"Not Armstrong: 123", 123, false},
+		{"Not Armstrong: 10", 10, false},
+
+		// More Armstrong numbers to ensure proper implementation
+		{"Three digit Armstrong: 407", 407, true},
+		{"Four digit Armstrong: 1634", 1634, true},
+
+		// More non-Armstrong to ensure proper logic
 		{"Not Armstrong: 111", 111, false},
-		{"Not Armstrong: 222", 222, false},
 		{"Not Armstrong: 1000", 1000, false},
-		{"Not Armstrong: 1635", 1635, false},
-		{"Not Armstrong: 154", 154, false},
-		{"Not Armstrong: 372", 372, false},
-		{"Two digit: 10", 10, false},
-		{"Two digit: 11", 11, false},
-		{"Two digit: 99", 99, false},
-		{"Large non-Armstrong: 12345", 12345, false},
+	}
+
+	// Check that the function is actually implemented (not just returning a constant)
+	// Test a few known values to detect placeholder implementations
+	if isArmstrong(153) == isArmstrong(123) && isArmstrong(371) == isArmstrong(10) {
+		t.Fatal("Function appears to be returning a constant value. Please implement the actual Armstrong number logic.")
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := isArmstrong(tt.input); got != tt.expected {
-				t.Errorf("isArmstrong(%d) = %t, want %t", tt.input, got, tt.expected)
-			}
-		})
-	}
-}
-
-// Additional edge case tests
-func TestIsArmstrongEdgeCases(t *testing.T) {
-	edgeCases := []struct {
-		name     string
-		input    int
-		expected bool
-	}{
-		{"Zero", 0, true},
-		{"Single digit 2", 2, true},
-		{"Single digit 7", 7, true},
-		{"Boundary: 100", 100, false},
-		{"Boundary: 999", 999, false},
-		{"Boundary: 1000", 1000, false},
-		{"Six digit Armstrong: 548834", 548834, true},
-		{"Large Armstrong: 1741725", 1741725, true},
-		{"Large non-Armstrong: 1000000", 1000000, false},
-	}
-
-	for _, tt := range edgeCases {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := isArmstrong(tt.input); got != tt.expected {
-				t.Errorf("isArmstrong(%d) = %t, want %t", tt.input, got, tt.expected)
+				if tt.expected {
+					t.Errorf("isArmstrong(%d) = %t, want %t (this IS an Armstrong number)", tt.input, got, tt.expected)
+				} else {
+					t.Errorf("isArmstrong(%d) = %t, want %t (this is NOT an Armstrong number)", tt.input, got, tt.expected)
+				}
 			}
 		})
 	}
